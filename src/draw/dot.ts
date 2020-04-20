@@ -12,13 +12,13 @@ function dot(
         color  = 'red',
         delay? : number) {
 
-    let $dot = circle(g, { center: p, radius: r }, 'dot ' + color, delay);
+    let [$dot] = circle(g, { center: p, radius: r }, 'dot ' + color, delay);
 
     if (delay) { 
-        setTimeout(() => $dot.forEach(e => e.remove(), delay)); 
+        setTimeout(() => $dot.remove(), delay); 
     }
 
-    return [...$dot];
+    return [$dot];
 }
 
 

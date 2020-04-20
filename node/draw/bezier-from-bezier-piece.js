@@ -9,8 +9,8 @@ const split_at_1 = require("./split-at");
  *
  * Uses de Casteljau's algorithm.
  *
- * @param ps A bezier
- * @param tRange A t range
+ * @param ps a bezier
+ * @param tRange a t range
  */
 function bezierFromBezierPiece(ps, tRange) {
     // If tRange = [0,1] then return original bezier.

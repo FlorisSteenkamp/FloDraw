@@ -10,8 +10,8 @@ import { splitAt } from "./split-at";
  * 
  * Uses de Casteljau's algorithm.
  * 
- * @param ps A bezier
- * @param tRange A t range
+ * @param ps a bezier
+ * @param tRange a t range
  */
 function bezierFromBezierPiece(ps: number[][], tRange: number[]) {
 

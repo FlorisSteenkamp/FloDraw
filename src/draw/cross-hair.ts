@@ -1,7 +1,7 @@
 
 import { DEFAULT_CLASS } from './default-class';
 import { circle } from './circle';
-import { line   } from './line';
+import { line } from './line';
 
 
 /**

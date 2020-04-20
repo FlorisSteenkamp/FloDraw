@@ -5,8 +5,8 @@
  *
  * Uses de Casteljau's algorithm.
  *
- * @param ps A bezier
- * @param tRange A t range
+ * @param ps a bezier
+ * @param tRange a t range
  */
 declare function bezierFromBezierPiece(ps: number[][], tRange: number[]): number[][];
 export { bezierFromBezierPiece };

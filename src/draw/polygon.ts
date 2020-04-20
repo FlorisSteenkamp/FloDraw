@@ -3,6 +3,14 @@ import { DEFAULT_CLASS } from './default-class';
 import { XMLNS } from './xmlns';
 
 
+/**
+ * Draws a polygon
+ * @param g 
+ * @param poly the polygon specified as an array of points - the last point does
+ * not have to be specified
+ * @param class_ 
+ * @param delay 
+ */
 function polygon(
         g      : SVGGElement,
         poly   : number[][], 

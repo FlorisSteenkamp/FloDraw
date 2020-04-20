@@ -1,6 +1,6 @@
 {
     "name": "flo-draw",
-    "description": "SVG draw functions.",
+    "description": "SVG draw functions used in debugging.",
     "version": "0.0.1",
     "author": {
         "name": "Floris Steenkamp"
@@ -14,14 +14,14 @@
     },
     "dependencies": {},
     "devDependencies": {
-        "rimraf": "^2.6.3",
-        "ts-loader": "^6.0.4",
-        "typescript": "^3.5.3",
-        "webpack": "^4.39.3",
-        "webpack-cli": "^3.3.7"
+        "rimraf": "^3.0.2",
+        "ts-loader": "^7.0.1",
+        "typescript": "^3.8.3",
+        "webpack": "^4.42.1",
+        "webpack-cli": "^3.3.11"
     },
     "scripts": {
-        "build": "npm run build-node && npm run build-browser",
+        "build": "npm run build-browser && npm run build-node",
         "build-node": "rimraf node && tsc",
         "build-browser": "rimraf browser && webpack"
     }
