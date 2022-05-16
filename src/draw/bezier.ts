@@ -1,8 +1,7 @@
-
-import { DEFAULT_CLASS } from "./default-class";
-import { line } from "./line";
-import { quadBezier } from "./quad-bezier";
-import { cubicBezier } from "./cubic-bezier";
+import { DEFAULT_CLASS } from "./default-class.js";
+import { line } from "./line.js";
+import { quadBezier } from "./quad-bezier.js";
+import { cubicBezier } from "./cubic-bezier.js";
 
 
 function bezier(

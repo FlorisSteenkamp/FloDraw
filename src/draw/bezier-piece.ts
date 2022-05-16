@@ -1,9 +1,8 @@
-
-import { DEFAULT_CLASS } from './default-class';
-import { crossHair } from './cross-hair';
-import { bezier } from './bezier';
-import { evaluateBezier } from './evaluate-bezier';
-import { bezierFromBezierPiece } from './bezier-from-bezier-piece';
+import { DEFAULT_CLASS } from './default-class.js';
+import { crossHair } from './cross-hair.js';
+import { bezier } from './bezier.js';
+import { evaluateBezier } from './evaluate-bezier.js';
+import { bezierFromBezierPiece } from './bezier-from-bezier-piece.js';
 
 
 /**

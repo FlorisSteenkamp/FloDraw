@@ -1,5 +1,4 @@
-
-import { circle } from "./circle";
+import { circle } from "./circle.js";
 
 
 /**

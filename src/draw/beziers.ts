@@ -1,5 +1,4 @@
-
-import { bezier } from './bezier';
+import { bezier } from './bezier.js';
 
 const COLORS = ['red', 'green', 'cyan', 'blue'];
 

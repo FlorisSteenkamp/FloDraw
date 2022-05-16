@@ -1,6 +1,5 @@
-
-import { DEFAULT_CLASS } from './default-class';
-import { bezierPiece } from './bezier-piece';
+import { DEFAULT_CLASS } from './default-class.js';
+import { bezierPiece } from './bezier-piece.js';
 
 
 function bezierPieces(

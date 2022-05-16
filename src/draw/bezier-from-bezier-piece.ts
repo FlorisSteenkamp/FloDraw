@@ -1,6 +1,5 @@
-
-import { evaluateBezier } from "./evaluate-bezier";
-import { splitAt } from "./split-at";
+import { evaluateBezier } from "./evaluate-bezier.js";
+import { splitAt } from "./split-at.js";
 
 
 /**

@@ -1,7 +1,6 @@
-
-import { DEFAULT_CLASS } from './default-class';
-import { circle } from './circle';
-import { line } from './line';
+import { DEFAULT_CLASS } from './default-class.js';
+import { circle } from './circle.js';
+import { line } from './line.js';
 
 
 /**

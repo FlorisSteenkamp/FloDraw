@@ -1,5 +1,5 @@
-import { DEFAULT_CLASS } from "./default-class";
-import { XMLNS } from "./xmlns";
+import { DEFAULT_CLASS } from "./default-class.js";
+import { XMLNS } from "./xmlns.js";
 
 /**
  * Draws text

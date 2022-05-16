@@ -1,7 +1,6 @@
-
-import { DEFAULT_CLASS } from "./default-class";
-import { XMLNS } from "./xmlns";
-import { crossHair } from './cross-hair';
+import { DEFAULT_CLASS } from "./default-class.js";
+import { XMLNS } from "./xmlns.js";
+import { crossHair } from "./cross-hair.js";
 
 
 function cubicBezier(

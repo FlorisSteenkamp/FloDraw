@@ -1,5 +1,4 @@
-
-import { drawFs } from "../draw-fs";
+import { drawFs } from "../draw-fs.js";
 
 
 interface Debug {
@@ -11,7 +10,7 @@ interface Debug {
 /**
  * Returns a new debug object by spreading boolean operation debug information
  * onto the given (possibly undefined) debug object.
- * @param debug a (possibly undefined) debug object
+ * @param debugOn a (possibly undefined) debug object
  */
 function enableDebugDrawFs(debugOn: boolean) {
     if (!debugOn) { return; }
