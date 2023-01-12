@@ -7,11 +7,11 @@ import { line } from './line.js';
  * Draws a crosshair.
  */
 function crossHair(
-        g       : SVGGElement,
-        p       : number[], 
-        classes : string = DEFAULT_CLASS, 
-        r       : number = 3 ,
-        delay?  : number): SVGElement[] {
+        g: SVGGElement,
+        p: number[], 
+        classes = DEFAULT_CLASS, 
+        r = 3 ,
+        delay?: number): SVGElement[] {
 
     const circle_ = { center: p, radius: r };
     const $circle = circle(g, circle_, classes);
