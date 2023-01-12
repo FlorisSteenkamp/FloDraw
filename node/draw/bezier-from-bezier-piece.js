@@ -17,7 +17,7 @@ function bezierFromBezierPiece(ps, tRange) {
     }
     // If tRange[0] === tRange[1] then return a single point degenerated bezier.
     if (tRange[0] === tRange[1]) {
-        let p = evaluateBezier(ps, tRange[0]);
+        const p = evaluateBezier(ps, tRange[0]);
         return [p, p, p, p];
     }
     if (tRange[0] === 0) {
