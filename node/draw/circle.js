@@ -8,9 +8,9 @@ import { XMLNS } from './xmlns.js';
  * @param delay
  */
 function circle(g, circle, classes = DEFAULT_CLASS, delay) {
-    let c = circle.center;
-    let r = circle.radius;
-    let $circle = document.createElementNS(XMLNS, 'circle');
+    const c = circle.center;
+    const r = circle.radius;
+    const $circle = document.createElementNS(XMLNS, 'circle');
     $circle.setAttributeNS(null, "cx", c[0].toString());
     $circle.setAttributeNS(null, "cy", c[1].toString());
     $circle.setAttributeNS(null, "r", r.toString());

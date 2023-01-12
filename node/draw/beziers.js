@@ -7,12 +7,12 @@ const COLORS = ['red', 'green', 'cyan', 'blue'];
  * @param delay
  */
 function beziers(g, beziers, classes, delay) {
-    let alternateColors = classes === undefined;
-    let $beziers = [];
+    const alternateColors = classes === undefined;
+    const $beziers = [];
     for (let i = 0; i < beziers.length; i++) {
-        let ps = beziers[i];
-        let color = COLORS[i % COLORS.length];
-        let class_ = alternateColors
+        const ps = beziers[i];
+        const color = COLORS[i % COLORS.length];
+        const class_ = alternateColors
             ? 'thin5 nofill ' + color
             : classes;
         $beziers.push(...bezier(g, ps, class_));

@@ -12,7 +12,7 @@ import { bezier } from './draw/bezier.js';
 import { bezierPiece } from './draw/bezier-piece.js';
 import { quadBezier } from './draw/quad-bezier.js';
 import { text } from './draw/text.js';
-declare let drawFs: {
+declare const drawFs: {
     circle: typeof circle;
     crossHair: typeof crossHair;
     dot: typeof dot;

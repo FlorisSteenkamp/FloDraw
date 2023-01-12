@@ -4,10 +4,10 @@ function loop(g, curves, class_ = DEFAULT_CLASS, delay) {
     if (!curves.length) {
         return [];
     }
-    let $path = document.createElementNS(XMLNS, 'path');
+    const $path = document.createElementNS(XMLNS, 'path');
     let d = `M${curves[0][0][0]} ${curves[0][0][1]} `;
     for (let i = 0; i < curves.length; i++) {
-        let curve = curves[i];
+        const curve = curves[i];
         d += `${getType(curve.length)} `;
         for (let j = 1; j < curve.length; j++) {
             d += `${curve[j][0]} ${curve[j][1]} `;

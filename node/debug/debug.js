@@ -8,8 +8,8 @@ function enableDebugDrawFs(debugOn) {
     if (!debugOn) {
         return;
     }
-    let debug = window._debug_;
-    debug = {
+    const debug = window._debug_;
+    const debug_ = {
         ...debug,
         fs: {
             ...debug?.fs,
@@ -18,7 +18,7 @@ function enableDebugDrawFs(debugOn) {
             }
         }
     };
-    window._debug_ = debug;
+    window._debug_ = debug_;
 }
 export { enableDebugDrawFs };
 //# sourceMappingURL=debug.js.map

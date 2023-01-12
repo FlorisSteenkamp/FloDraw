@@ -4,7 +4,7 @@ function polyline(g, poly, class_ = DEFAULT_CLASS, delay) {
     if (poly.length < 2) {
         return [];
     }
-    let $path = document.createElementNS(XMLNS, 'path');
+    const $path = document.createElementNS(XMLNS, 'path');
     let d = `M${poly[0][0]} ${poly[0][1]} L`;
     for (let i = 0; i < poly.length; i++) {
         d += `${poly[i][0]} ${poly[i][1]} `;

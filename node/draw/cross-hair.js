@@ -5,12 +5,12 @@ import { line } from './line.js';
  * Draws a crosshair.
  */
 function crossHair(g, p, classes = DEFAULT_CLASS, r = 3, delay) {
-    let circle_ = { center: p, radius: r };
-    let $circle = circle(g, circle_, classes);
-    let l1 = [[p[0] - r, p[1]], [p[0] + r, p[1]]];
-    let l2 = [[p[0], p[1] - r], [p[0], p[1] + r]];
-    let $l1 = line(g, l1, classes);
-    let $l2 = line(g, l2, classes);
+    const circle_ = { center: p, radius: r };
+    const $circle = circle(g, circle_, classes);
+    const l1 = [[p[0] - r, p[1]], [p[0] + r, p[1]]];
+    const l2 = [[p[0], p[1] - r], [p[0], p[1] + r]];
+    const $l1 = line(g, l1, classes);
+    const $l2 = line(g, l2, classes);
     if (delay) {
         setTimeout(() => {
             $circle.forEach(e => e.remove());

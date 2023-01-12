@@ -1,5 +1,6 @@
 {
     "name": "flo-draw",
+    "sideEffects": false,
     "description": "SVG draw functions used in debugging.",
     "version": "2.0.0",
     "author": {
@@ -19,16 +20,16 @@
     },
     "dependencies": {},
     "devDependencies": {
-        "@types/node": "^17.0.33",
+        "@types/node": "^18.11.18",
         "rimraf": "^3.0.2",
-        "ts-loader": "^9.3.0",
-        "ts-node": "^10.7.0",
-        "typescript": "^4.6.4",
-        "webpack": "^5.72.1",
-        "webpack-cli": "^4.9.2",
+        "ts-loader": "^9.4.2",
+        "ts-node": "^10.9.1",
+        "typescript": "^4.9.4",
+        "webpack": "^5.75.0",
+        "webpack-cli": "^5.0.1",
         "source-map-support": "^0.5.21",
         "circular-dependency-plugin": "^5.2.2",
-        "resolve-typescript-plugin": "^1.2.0"
+        "resolve-typescript-plugin": "^2.0.0"
     },
     "scripts": {
         "build": "npm run build-browser && npm run build-node",

@@ -15,8 +15,8 @@ const extensions = [
 
 
 const config_Basic = {
-    // mode: 'production',
-    mode: 'development',
+    mode: 'production',
+    // mode: 'development',
     entry: './src/index.ts',
     resolve: {
         extensions,

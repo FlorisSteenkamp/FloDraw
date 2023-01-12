@@ -7,7 +7,7 @@ import { XMLNS } from './xmlns.js';
  * @param classes
  */
 function line(g, l, classes = DEFAULT_CLASS, delay) {
-    let $line = document.createElementNS(XMLNS, 'line');
+    const $line = document.createElementNS(XMLNS, 'line');
     $line.setAttributeNS(null, "x1", l[0][0].toString());
     $line.setAttributeNS(null, "y1", l[0][1].toString());
     $line.setAttributeNS(null, "x2", l[1][0].toString());

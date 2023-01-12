@@ -3,7 +3,7 @@ import { circle } from "./circle.js";
  * Draws a dot.
  */
 function dot(g, p, r = 3, color = 'red', delay) {
-    let [$dot] = circle(g, { center: p, radius: r }, 'dot ' + color, delay);
+    const [$dot] = circle(g, { center: p, radius: r }, 'dot ' + color, delay);
     if (delay) {
         setTimeout(() => $dot.remove(), delay);
     }
