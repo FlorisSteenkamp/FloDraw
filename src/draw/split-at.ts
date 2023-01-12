@@ -30,22 +30,22 @@ function splitAt(ps: number[][], t: number): number[][][] {
  * @param t The t parameter where the curve should be split
  */
 function splitCubicAt(ps: number[][], t: number): number[][][] {
-	let [[x0, y0], [x1, y1], [x2, y2], [x3, y3]] = ps; 
+	const [[x0, y0], [x1, y1], [x2, y2], [x3, y3]] = ps; 
 		
-	let s  = 1  - t;
-	let t2 = t  * t;
-	let t3 = t2 * t;
-	let s2 = s  * s;
-	let s3 = s2 * s;
+	const s  = 1  - t;
+	const t2 = t  * t;
+	const t3 = t2 * t;
+	const s2 = s  * s;
+	const s3 = s2 * s;
     
     /** The split point */
-    let p = [
+    const p = [
         t3*x3 + 3*s*t2*x2 + 3*s2*t*x1 + s3*x0, 
         t3*y3 + 3*s*t2*y2 + 3*s2*t*y1 + s3*y0
     ];
 
 
-	let ps1 = [
+	const ps1 = [
 		[x0, y0],
         [t*x1 + s*x0, 
          t*y1 + s*y0],
@@ -54,7 +54,7 @@ function splitCubicAt(ps: number[][], t: number): number[][][] {
 		p
 	];
 	
-	let ps2 = [
+	const ps2 = [
 		p,
         [t2*x3 + 2*t*s*x2 + s2*x1, 
          t2*y3 + 2*t*s*y2 + s2*y1],
@@ -71,24 +71,24 @@ function splitQuadAt(
         ps: number[][], 
         t: number) {
 
-    let [[x0, y0], [x1, y1], [x2, y2]] = ps; 
+    const [[x0, y0], [x1, y1], [x2, y2]] = ps; 
 		
-    let s = 1-t;
+    const s = 1-t;
 
     /** The split point */
-    let p = [
+    const p = [
         s*s*x0 + 2*s*t*x1 + t*t*x2,
         s*s*y0 + 2*s*t*y1 + t*t*y2
     ];
     
-    let ps1 = [
+    const ps1 = [
         [x0, y0],
         [s*x0 + t*x1, 
          s*y0 + t*y1],
         p
     ];
 
-    let ps2 = [
+    const ps2 = [
         p,
         [s*x1 + t*x2, 
          s*y1 + t*y2],
@@ -103,22 +103,22 @@ function splitLineAt(
         ps: number[][], 
         t: number) {
 
-    let [[x0, y0], [x1, y1]] = ps; 
+    const [[x0, y0], [x1, y1]] = ps; 
         
-    let s = 1-t;
+    const s = 1-t;
 
     /** The split point */
-    let p = [
+    const p = [
         s*x0 + t*x1,
         s*y0 + t*y1
     ];
 
-    let ps1 = [
+    const ps1 = [
         [x0, y0],
         p
     ];
 
-    let ps2 = [
+    const ps2 = [
         p,
         [x1, y1]
     ];

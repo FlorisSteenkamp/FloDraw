@@ -15,14 +15,14 @@ function beziers(
         classes? : string,
         delay?   : number) {
 
-    let alternateColors = classes === undefined;
+    const alternateColors = classes === undefined;
 
-    let $beziers: SVGElement[] = [];
+    const $beziers: SVGElement[] = [];
 
     for (let i=0; i<beziers.length; i++) {
-        let ps = beziers[i];
-        let color = COLORS[i % COLORS.length];
-        let class_ = alternateColors
+        const ps = beziers[i];
+        const color = COLORS[i % COLORS.length];
+        const class_ = alternateColors
             ? 'thin5 nofill ' + color
             : classes;
 

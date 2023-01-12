@@ -14,7 +14,7 @@ import { quadBezier } from './draw/quad-bezier.js';
 import { text } from './draw/text.js';
 
 
-let drawFs = {
+const drawFs = {
 	circle,
 	crossHair,
 	dot,

@@ -9,9 +9,9 @@ function quadBezier(
         delay? : number) {
 
 
-    let [[x0,y0],[x1,y1],[x2,y2]] = ps;
+    const [[x0,y0],[x1,y1],[x2,y2]] = ps;
 
-    let $path = document.createElementNS(XMLNS, 'path');
+    const $path = document.createElementNS(XMLNS, 'path');
     $path.setAttributeNS(
         null, 
         "d", 

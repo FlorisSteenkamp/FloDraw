@@ -8,7 +8,7 @@ function bezierPieces(
         class_       : string = DEFAULT_CLASS,
         delay?       : number) {
 
-    let $elems: SVGElement[] = [];
+    const $elems: SVGElement[] = [];
 
     for (let i=0; i<bezierPieces.length; i++) {
         $elems.push(...bezierPiece(

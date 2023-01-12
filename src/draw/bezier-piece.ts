@@ -19,16 +19,10 @@ function bezierPiece(
         class_ : string = DEFAULT_CLASS,
         delay? : number) {
 
-    let $elems: SVGElement[] = [];
-
-    // Draw crosshair if t range bounds are equal.
-    if (tRange[0] === tRange[1]) {
-        let p = evaluateBezier(ps_, tRange[0]);
-        $elems = crossHair(g, p, class_, 1.5);
-    } else {
-        let ps = bezierFromBezierPiece(ps_, tRange);
-        $elems = bezier(g, ps, class_);
-    }
+    const $elems: SVGElement[] = (tRange[0] === tRange[1])
+          // Draw crosshair if t range bounds are equal.
+        ? crossHair(g, evaluateBezier(ps_, tRange[0]), class_, 1.5)
+        : bezier(g, bezierFromBezierPiece(ps_, tRange), class_)
 
     if (delay) { 
         setTimeout(() => $elems.forEach(e => e.remove()), delay);

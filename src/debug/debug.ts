@@ -15,9 +15,9 @@ interface Debug {
 function enableDebugDrawFs(debugOn: boolean) {
     if (!debugOn) { return; }
 
-    let debug: Debug = (window as any)._debug_;
+    const debug: Debug = (window as any)._debug_;
 
-    debug = { 
+    const debug_ = { 
         ...debug, 
         fs: {
             ...debug?.fs,
@@ -27,8 +27,8 @@ function enableDebugDrawFs(debugOn: boolean) {
         }
     };
 
-    (window as any)._debug_ = debug;
-}   
+    (window as any)._debug_ = debug_;
+}
 
 
 export { enableDebugDrawFs }

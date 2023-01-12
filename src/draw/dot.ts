@@ -11,7 +11,7 @@ function dot(
         color  = 'red',
         delay? : number) {
 
-    let [$dot] = circle(g, { center: p, radius: r }, 'dot ' + color, delay);
+    const [$dot] = circle(g, { center: p, radius: r }, 'dot ' + color, delay);
 
     if (delay) { 
         setTimeout(() => $dot.remove(), delay); 

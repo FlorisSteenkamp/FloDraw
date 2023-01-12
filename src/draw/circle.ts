@@ -15,10 +15,10 @@ function circle(
         classes = DEFAULT_CLASS,
         delay?  : number) {
 
-    let c = circle.center;
-    let r = circle.radius;
+    const c = circle.center;
+    const r = circle.radius;
 
-    let $circle = document.createElementNS(XMLNS, 'circle');
+    const $circle = document.createElementNS(XMLNS, 'circle');
     $circle.setAttributeNS(null, "cx", c[0].toString());
     $circle.setAttributeNS(null, "cy", c[1].toString());
     $circle.setAttributeNS(null, "r", r.toString());

@@ -18,7 +18,7 @@ function text(
         classes = DEFAULT_CLASS,
         delay?   : number) {
 
-    let $text = document.createElementNS(XMLNS, 'text');
+    const $text = document.createElementNS(XMLNS, 'text');
     $text.setAttributeNS(null, "x", p[0].toString());
     $text.setAttributeNS(null, "y", p[1].toString());
     $text.setAttributeNS(null, "font-size", fontSize.toString()); 
