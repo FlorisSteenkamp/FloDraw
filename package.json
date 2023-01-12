@@ -2,7 +2,7 @@
     "name": "flo-draw",
     "sideEffects": false,
     "description": "SVG draw functions used in debugging.",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "author": {
         "name": "Floris Steenkamp"
     },
