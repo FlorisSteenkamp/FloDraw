@@ -9,9 +9,9 @@ function quadBezier(
         ps: number[][], 
         class_: string = DEFAULT_CLASS,
         delay = 0,
-        controlPointClass = undefined,
+        controlPointClass: string | undefined = undefined,
         controlPointRadius = 0,
-        lineCLass = undefined) {
+        lineCLass: string | undefined = undefined) {
 
 
     const [[x0,y0],[x1,y1],[x2,y2]] = ps;

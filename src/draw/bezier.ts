@@ -20,9 +20,9 @@ function bezier(
         bezier : number[][], 
         class_ = DEFAULT_CLASS,
         delay = 0,
-        controlPointClass = undefined,
+        controlPointClass: string | undefined = undefined,
         controlPointRadius = 0,
-        lineClass = undefined) {
+        lineClass: string | undefined = undefined) {
 
     if (bezier.length === 2) {
         return line(g, bezier, class_, delay, controlPointClass, controlPointRadius);

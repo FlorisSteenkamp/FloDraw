@@ -14,7 +14,7 @@ function line(
         l: number[][], 
         classes: string = DEFAULT_CLASS,
         delay = 0,
-        controlPointClass = undefined,
+        controlPointClass: string | undefined = undefined,
         controlPointRadius = 0) {
 
     const $line = document.createElementNS(XMLNS, 'line');
