@@ -1,12 +1,17 @@
 import { DEFAULT_CLASS } from './default-class.js';
+import { dot } from './dot.js';
+import { line } from './line.js';
 import { XMLNS } from './xmlns.js';
 
 
 function quadBezier(
-        g      : SVGGElement,
-        ps     : number[][], 
-        class_ : string = DEFAULT_CLASS,
-        delay? : number) {
+        g: SVGGElement,
+        ps: number[][], 
+        class_: string = DEFAULT_CLASS,
+        delay = 0,
+        controlPointClass = undefined,
+        controlPointRadius = 0,
+        lineCLass = undefined) {
 
 
     const [[x0,y0],[x1,y1],[x2,y2]] = ps;
@@ -19,11 +24,28 @@ function quadBezier(
     );
     if (class_) { $path.setAttributeNS(null, "class", class_); }
 
-    g.appendChild($path);
+    let $dots: SVGCircleElement[] = [];
+    if (controlPointClass !== undefined) {
+        for (const p of ps) {
+            $dots.push(...dot(g, p, controlPointRadius, controlPointClass, delay));
+        }
+    }
 
-    if (delay) { setTimeout(() => $path.remove(), delay); }
+    let $lines: SVGElement[] = [];
+    if (lineCLass !== undefined) {
+        for (let i=0; i<ps.length-1; i++) {
+            $lines.push(...line(g, [ps[i],ps[i+1]], lineCLass, delay));
+        }
+    }
 
-    return [$path];
+    const $svgs = [$path, ...$dots, ...$lines];
+
+    for (const $ of $svgs) { g.appendChild($); }
+    if (delay) {
+        setTimeout(() => { for (const $ of $svgs) { $.remove(); } }, delay);
+    }
+
+    return $svgs;
 }
 
 

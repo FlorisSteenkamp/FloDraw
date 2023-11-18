@@ -4,5 +4,5 @@
  * @param l
  * @param classes
  */
-declare function line(g: SVGGElement, l: number[][], classes?: string, delay?: number): SVGLineElement[];
+declare function line(g: SVGGElement, l: number[][], classes?: string, delay?: number, controlPointClass?: undefined, controlPointRadius?: number): (SVGCircleElement | SVGLineElement)[];
 export { line };

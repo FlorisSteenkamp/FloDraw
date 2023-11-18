@@ -1,4 +1,5 @@
 import { DEFAULT_CLASS } from './default-class.js';
+import { dot } from './dot.js';
 import { XMLNS } from './xmlns.js';
 
 
@@ -9,10 +10,12 @@ import { XMLNS } from './xmlns.js';
  * @param classes 
  */
 function line(
-        g       : SVGGElement,
-        l       : number[][], 
-        classes : string = DEFAULT_CLASS,
-        delay?  : number) {
+        g: SVGGElement,
+        l: number[][], 
+        classes: string = DEFAULT_CLASS,
+        delay = 0,
+        controlPointClass = undefined,
+        controlPointRadius = 0) {
 
     const $line = document.createElementNS(XMLNS, 'line');
     $line.setAttributeNS(null, "x1", l[0][0].toString());
@@ -20,12 +23,23 @@ function line(
     $line.setAttributeNS(null, "x2", l[1][0].toString());
     $line.setAttributeNS(null, "y2", l[1][1].toString());
     $line.setAttributeNS(null, "class", classes); 
-
     g.appendChild($line);
 
-    if (delay) { setTimeout(() => $line.remove(), delay); }
+    let $dots: SVGCircleElement[] = [];
+    if (controlPointClass !== undefined) {
+        for (const p of l) {
+            $dots.push(...dot(g, p, controlPointRadius, controlPointClass, delay));
+        }
+    }
+    for (const $ of $dots) { g.appendChild($); }
 
-    return [$line];
+    const $svgs = [$line, ...$dots];
+
+    if (delay) {
+        setTimeout(() => { for (const $ of $svgs) { $.remove(); } }, delay);
+    }
+
+    return $svgs;
 }
 
 

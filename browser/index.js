@@ -1,47 +1,31 @@
-var FloDraw;
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	// The require scope
-/******/ 	var __webpack_require__ = {};
-/******/ 	
+/******/ // The require scope
+/******/ var __webpack_require__ = {};
+/******/ 
 /************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
+/******/ /* webpack/runtime/define property getters */
+/******/ (() => {
+/******/ 	// define getter functions for harmony exports
+/******/ 	__webpack_require__.d = (exports, definition) => {
+/******/ 		for(var key in definition) {
+/******/ 			if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 				Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
+/******/ 		}
+/******/ 	};
+/******/ })();
+/******/ 
+/******/ /* webpack/runtime/hasOwnProperty shorthand */
+/******/ (() => {
+/******/ 	__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ })();
+/******/ 
 /************************************************************************/
 var __webpack_exports__ = {};
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "drawFs": () => (/* reexport */ drawFs),
-  "enableDebugDrawFs": () => (/* reexport */ enableDebugDrawFs)
+  Q: () => (/* reexport */ drawFs),
+  h: () => (/* reexport */ enableDebugDrawFs)
 });
 
 ;// CONCATENATED MODULE: ./src/draw/default-class.ts
@@ -78,7 +62,22 @@ function circle(g, circle, classes = DEFAULT_CLASS, delay) {
 }
 
 
+;// CONCATENATED MODULE: ./src/draw/dot.ts
+
+/**
+ * Draws a dot.
+ */
+function dot(g, p, r = 3, color = 'red', delay) {
+    const [$dot] = circle(g, { center: p, radius: r }, 'dot ' + color, delay);
+    if (delay) {
+        setTimeout(() => $dot.remove(), delay);
+    }
+    return [$dot];
+}
+
+
 ;// CONCATENATED MODULE: ./src/draw/line.ts
+
 
 
 /**
@@ -87,7 +86,7 @@ function circle(g, circle, classes = DEFAULT_CLASS, delay) {
  * @param l
  * @param classes
  */
-function line(g, l, classes = DEFAULT_CLASS, delay) {
+function line(g, l, classes = DEFAULT_CLASS, delay = 0, controlPointClass = undefined, controlPointRadius = 0) {
     const $line = document.createElementNS(XMLNS, 'line');
     $line.setAttributeNS(null, "x1", l[0][0].toString());
     $line.setAttributeNS(null, "y1", l[0][1].toString());
@@ -95,10 +94,22 @@ function line(g, l, classes = DEFAULT_CLASS, delay) {
     $line.setAttributeNS(null, "y2", l[1][1].toString());
     $line.setAttributeNS(null, "class", classes);
     g.appendChild($line);
-    if (delay) {
-        setTimeout(() => $line.remove(), delay);
+    let $dots = [];
+    if (controlPointClass !== undefined) {
+        for (const p of l) {
+            $dots.push(...dot(g, p, controlPointRadius, controlPointClass, delay));
+        }
     }
-    return [$line];
+    for (const $ of $dots) {
+        g.appendChild($);
+    }
+    const $svgs = [$line, ...$dots];
+    if (delay) {
+        setTimeout(() => { for (const $ of $svgs) {
+            $.remove();
+        } }, delay);
+    }
+    return $svgs;
 }
 
 
@@ -124,20 +135,6 @@ function crossHair(g, p, classes = DEFAULT_CLASS, r = 3, delay) {
         }, delay);
     }
     return [...$circle, ...$l1, ...$l2];
-}
-
-
-;// CONCATENATED MODULE: ./src/draw/dot.ts
-
-/**
- * Draws a dot.
- */
-function dot(g, p, r = 3, color = 'red', delay) {
-    const [$dot] = circle(g, { center: p, radius: r }, 'dot ' + color, delay);
-    if (delay) {
-        setTimeout(() => $dot.remove(), delay);
-    }
-    return [$dot];
 }
 
 
@@ -263,18 +260,37 @@ function polyline(g, poly, class_ = DEFAULT_CLASS, delay) {
 ;// CONCATENATED MODULE: ./src/draw/quad-bezier.ts
 
 
-function quadBezier(g, ps, class_ = DEFAULT_CLASS, delay) {
+
+
+function quadBezier(g, ps, class_ = DEFAULT_CLASS, delay = 0, controlPointClass = undefined, controlPointRadius = 0, lineCLass = undefined) {
     const [[x0, y0], [x1, y1], [x2, y2]] = ps;
     const $path = document.createElementNS(XMLNS, 'path');
     $path.setAttributeNS(null, "d", `M${x0} ${y0} Q${x1} ${y1} ${x2} ${y2}`);
     if (class_) {
         $path.setAttributeNS(null, "class", class_);
     }
-    g.appendChild($path);
-    if (delay) {
-        setTimeout(() => $path.remove(), delay);
+    let $dots = [];
+    if (controlPointClass !== undefined) {
+        for (const p of ps) {
+            $dots.push(...dot(g, p, controlPointRadius, controlPointClass, delay));
+        }
     }
-    return [$path];
+    let $lines = [];
+    if (lineCLass !== undefined) {
+        for (let i = 0; i < ps.length - 1; i++) {
+            $lines.push(...line(g, [ps[i], ps[i + 1]], lineCLass, delay));
+        }
+    }
+    const $svgs = [$path, ...$dots, ...$lines];
+    for (const $ of $svgs) {
+        g.appendChild($);
+    }
+    if (delay) {
+        setTimeout(() => { for (const $ of $svgs) {
+            $.remove();
+        } }, delay);
+    }
+    return $svgs;
 }
 
 
@@ -282,8 +298,10 @@ function quadBezier(g, ps, class_ = DEFAULT_CLASS, delay) {
 
 
 
-function cubicBezier(g, bezier, class_ = DEFAULT_CLASS, delay) {
-    const [[x0, y0], [x1, y1], [x2, y2], [x3, y3]] = bezier;
+
+
+function cubicBezier(g, ps, class_ = DEFAULT_CLASS, delay = 0, controlPointClass = undefined, controlPointRadius = 0, lineCLass = undefined) {
+    const [[x0, y0], [x1, y1], [x2, y2], [x3, y3]] = ps;
     if (x0 === x3 && x1 === x3 && x2 === x3 &&
         y0 === y3 && y1 === y3 && y2 === y3) {
         return crossHair(g, [x0, y0], class_, 0.2, delay);
@@ -291,11 +309,28 @@ function cubicBezier(g, bezier, class_ = DEFAULT_CLASS, delay) {
     const $path = document.createElementNS(XMLNS, 'path');
     $path.setAttributeNS(null, "d", `M${x0} ${y0} C${x1} ${y1} ${x2} ${y2} ${x3} ${y3}`);
     $path.setAttributeNS(null, "class", class_);
-    g.appendChild($path);
-    if (delay) {
-        setTimeout(() => $path.remove(), delay);
+    let $dots = [];
+    if (controlPointClass !== undefined) {
+        for (const p of ps) {
+            $dots.push(...dot(g, p, controlPointRadius, controlPointClass, delay));
+        }
     }
-    return [$path];
+    let $lines = [];
+    if (lineCLass !== undefined) {
+        for (let i = 0; i < ps.length - 1; i++) {
+            $lines.push(...line(g, [ps[i], ps[i + 1]], lineCLass, delay));
+        }
+    }
+    const $svgs = [$path, ...$dots, ...$lines];
+    for (const $ of $svgs) {
+        g.appendChild($);
+    }
+    if (delay) {
+        setTimeout(() => { for (const $ of $svgs) {
+            $.remove();
+        } }, delay);
+    }
+    return $svgs;
 }
 
 
@@ -304,15 +339,26 @@ function cubicBezier(g, bezier, class_ = DEFAULT_CLASS, delay) {
 
 
 
-function bezier(g, bezier, class_ = DEFAULT_CLASS, delay) {
+/**
+ * Draws a bezier.
+ *
+ * @param g
+ * @param bezier
+ * @param class_
+ * @param delay
+ * @param controlPointClass a dot at each control point will be drawn if specified
+ * @param lineClass a line to each control point will be drawn if specified
+ * @returns
+ */
+function bezier(g, bezier, class_ = DEFAULT_CLASS, delay = 0, controlPointClass = undefined, controlPointRadius = 0, lineClass = undefined) {
     if (bezier.length === 2) {
-        return line(g, bezier, class_, delay);
+        return line(g, bezier, class_, delay, controlPointClass, controlPointRadius);
     }
     else if (bezier.length === 3) {
-        return quadBezier(g, bezier, class_, delay);
+        return quadBezier(g, bezier, class_, delay, controlPointClass, controlPointRadius, lineClass);
     }
     else if (bezier.length === 4) {
-        return cubicBezier(g, bezier, class_, delay);
+        return cubicBezier(g, bezier, class_, delay, controlPointClass, controlPointRadius, lineClass);
     }
     return [];
 }
@@ -629,6 +675,6 @@ function enableDebugDrawFs(debugOn) {
 
 
 
-FloDraw = __webpack_exports__;
-/******/ })()
-;
+var __webpack_exports__drawFs = __webpack_exports__.Q;
+var __webpack_exports__enableDebugDrawFs = __webpack_exports__.h;
+export { __webpack_exports__drawFs as drawFs, __webpack_exports__enableDebugDrawFs as enableDebugDrawFs };

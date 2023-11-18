@@ -5,10 +5,15 @@ module.exports = {
         "node": true
     },
     "ignorePatterns": [
-        "node_modules/**/*",
         "*.cjs",
+        "*.min.js",
+        "node_modules/",
+        "dist/**/*",
+        "build/**/*",
         "node/**/*",
         "browser/**/*",
+        "unused/**/*",
+        "src-unused/**/*",
         "test/**/*"
     ],
     "extends": [
@@ -38,8 +43,10 @@ module.exports = {
                 "noSideEffectsWhenCalled": [
                     { "function": "Object.freeze" },
                     {
-                        "module": "react",
-                        "functions": ["createContext", "createRef"],
+                        "module": "#local",
+                        "functions": [
+                            
+                        ]
                     }
                 ]
             }

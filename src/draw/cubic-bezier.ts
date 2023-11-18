@@ -1,15 +1,20 @@
 import { DEFAULT_CLASS } from "./default-class.js";
 import { XMLNS } from "./xmlns.js";
 import { crossHair } from "./cross-hair.js";
+import { dot } from "./dot.js";
+import { line } from "./line.js";
 
 
 function cubicBezier(
         g      : SVGGElement,
-        bezier : number[][], 
+        ps : number[][], 
         class_ = DEFAULT_CLASS,
-        delay? : number) {
+        delay = 0,
+        controlPointClass = undefined,
+        controlPointRadius = 0,
+        lineCLass = undefined) {
 
-    const [[x0,y0],[x1,y1],[x2,y2],[x3,y3]] = bezier;
+    const [[x0,y0],[x1,y1],[x2,y2],[x3,y3]] = ps;
 
     if (x0 === x3 && x1 === x3 && x2 === x3 &&
         y0 === y3 && y1 === y3 && y2 === y3) {
@@ -24,11 +29,28 @@ function cubicBezier(
     );
     $path.setAttributeNS(null, "class", class_); 
 
-    g.appendChild($path);
+    let $dots: SVGCircleElement[] = [];
+    if (controlPointClass !== undefined) {
+        for (const p of ps) {
+            $dots.push(...dot(g, p, controlPointRadius, controlPointClass, delay));
+        }
+    }
 
-    if (delay) { setTimeout(() => $path.remove(), delay); }
+    let $lines: SVGElement[] = [];
+    if (lineCLass !== undefined) {
+        for (let i=0; i<ps.length-1; i++) {
+            $lines.push(...line(g, [ps[i],ps[i+1]], lineCLass, delay));
+        }
+    }
 
-    return [$path];
+    const $svgs = [$path, ...$dots, ...$lines];
+
+    for (const $ of $svgs) { g.appendChild($); }
+    if (delay) {
+        setTimeout(() => { for (const $ of $svgs) { $.remove(); } }, delay);
+    }
+
+    return $svgs;
 }
 
 
