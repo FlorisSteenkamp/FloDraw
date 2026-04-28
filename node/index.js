@@ -1,4 +1,3 @@
-import { drawFs } from './draw-fs.js';
-import { enableDebugDrawFs } from './debug/debug.js';
-export { drawFs, enableDebugDrawFs };
+export { drawFs } from './draw-fs.js';
+export { enableDebugDrawFs } from './debug/debug.js';
 //# sourceMappingURL=index.js.map

@@ -20,23 +20,16 @@
 /******/ })();
 /******/ 
 /************************************************************************/
-var __webpack_exports__ = {};
 
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  Q: () => (/* reexport */ drawFs),
-  h: () => (/* reexport */ enableDebugDrawFs)
-});
-
-;// CONCATENATED MODULE: ./src/draw/default-class.ts
+;// ./src/draw/default-class.ts
 const DEFAULT_CLASS = 'red thin10 nofill ';
 
 
-;// CONCATENATED MODULE: ./src/draw/xmlns.ts
+;// ./src/draw/xmlns.ts
 const XMLNS = 'http://www.w3.org/2000/svg';
 
 
-;// CONCATENATED MODULE: ./src/draw/circle.ts
+;// ./src/draw/circle.ts
 
 
 /**
@@ -62,7 +55,7 @@ function circle(g, circle, classes = DEFAULT_CLASS, delay) {
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/dot.ts
+;// ./src/draw/dot.ts
 
 /**
  * Draws a dot.
@@ -76,7 +69,7 @@ function dot(g, p, r = 3, color = 'red', delay) {
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/line.ts
+;// ./src/draw/line.ts
 
 
 
@@ -113,7 +106,7 @@ function line(g, l, classes = DEFAULT_CLASS, delay = 0, controlPointClass = unde
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/cross-hair.ts
+;// ./src/draw/cross-hair.ts
 
 
 
@@ -138,7 +131,7 @@ function crossHair(g, p, classes = DEFAULT_CLASS, r = 3, delay) {
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/rect.ts
+;// ./src/draw/rect.ts
 
 
 function rect(g, rect, classes = DEFAULT_CLASS, delay) {
@@ -163,7 +156,7 @@ function rect(g, rect, classes = DEFAULT_CLASS, delay) {
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/polygon.ts
+;// ./src/draw/polygon.ts
 
 
 /**
@@ -193,7 +186,7 @@ function polygon(g, poly, class_ = DEFAULT_CLASS, delay) {
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/loop.ts
+;// ./src/draw/loop.ts
 
 
 function loop(g, curves, class_ = DEFAULT_CLASS, delay) {
@@ -233,7 +226,7 @@ function getType(len) {
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/polyline.ts
+;// ./src/draw/polyline.ts
 
 
 function polyline(g, poly, class_ = DEFAULT_CLASS, delay) {
@@ -257,7 +250,7 @@ function polyline(g, poly, class_ = DEFAULT_CLASS, delay) {
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/quad-bezier.ts
+;// ./src/draw/quad-bezier.ts
 
 
 
@@ -294,7 +287,7 @@ function quadBezier(g, ps, class_ = DEFAULT_CLASS, delay = 0, controlPointClass 
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/cubic-bezier.ts
+;// ./src/draw/cubic-bezier.ts
 
 
 
@@ -334,7 +327,7 @@ function cubicBezier(g, ps, class_ = DEFAULT_CLASS, delay = 0, controlPointClass
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/bezier.ts
+;// ./src/draw/bezier.ts
 
 
 
@@ -364,7 +357,7 @@ function bezier(g, bezier, class_ = DEFAULT_CLASS, delay = 0, controlPointClass 
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/beziers.ts
+;// ./src/draw/beziers.ts
 
 const COLORS = ['red', 'green', 'cyan', 'blue'];
 /**
@@ -391,7 +384,7 @@ function beziers(g, beziers, classes, delay) {
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/evaluate-bezier.ts
+;// ./src/draw/evaluate-bezier.ts
 /**
  * Returns an estimate of evaluating the given bezier at the given t value.
  * @param ps An order 1, 2 or bezier
@@ -424,7 +417,7 @@ function evaluateBezier(ps, t) {
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/split-at.ts
+;// ./src/draw/split-at.ts
 /**
  * Returns 2 new beziers split at the given t parameter, i.e. for the ranges
  * [0,t] and [t,1].
@@ -525,7 +518,7 @@ function splitLineAt(ps, t) {
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/bezier-from-bezier-piece.ts
+;// ./src/draw/bezier-from-bezier-piece.ts
 
 
 /**
@@ -560,7 +553,7 @@ function bezierFromBezierPiece(ps, tRange) {
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/bezier-piece.ts
+;// ./src/draw/bezier-piece.ts
 
 
 
@@ -585,7 +578,7 @@ function bezierPiece(g, ps_, tRange, class_ = DEFAULT_CLASS, delay) {
 }
 
 
-;// CONCATENATED MODULE: ./src/draw/text.ts
+;// ./src/draw/text.ts
 
 
 /**
@@ -612,7 +605,7 @@ function text_text(g, p, str, fontSize, classes = DEFAULT_CLASS, delay) {
 }
 
 
-;// CONCATENATED MODULE: ./src/draw-fs.ts
+;// ./src/draw-fs.ts
 
 
 
@@ -645,7 +638,7 @@ const drawFs = {
 };
 
 
-;// CONCATENATED MODULE: ./src/debug/debug.ts
+;// ./src/debug/debug.ts
 
 /**
  * Returns a new debug object by spreading boolean operation debug information
@@ -670,11 +663,8 @@ function enableDebugDrawFs(debugOn) {
 }
 
 
-;// CONCATENATED MODULE: ./src/index.ts
+;// ./src/index.ts
 
 
 
-
-var __webpack_exports__drawFs = __webpack_exports__.Q;
-var __webpack_exports__enableDebugDrawFs = __webpack_exports__.h;
-export { __webpack_exports__drawFs as drawFs, __webpack_exports__enableDebugDrawFs as enableDebugDrawFs };
+export { drawFs, enableDebugDrawFs };
